@@ -26,9 +26,24 @@ The private project builds a Romanian Islamic education platform with:
 - Contact and communication surfaces that require spam and privacy review
 - Ongoing content workflow and review responsibilities
 
-TODO: Add verified screenshots of the live public interface.
+## Architecture
 
-TODO: Add a short architecture diagram that does not expose private source code.
+```mermaid
+flowchart LR
+    visitor["Visitor"] --> site["Public Next.js site"]
+    site --> content["Structured Islamic content"]
+    site --> contact["Contact surface"]
+    site --> metadata["SEO metadata and public pages"]
+
+    privateRepo["Private source repository"] --> deploy["Deployment platform\nTODO: confirm provider"]
+    deploy --> site
+    dns["Domain, DNS, and email"] --> site
+    security["Security review\nsecrets, headers, XSS, forms, DNS"] --> privateRepo
+    security --> deploy
+    security --> dns
+```
+
+This diagram is intentionally high-level. It does not expose private source code, credentials, infrastructure identifiers, or unpublished implementation details.
 
 ## Tech Stack
 
@@ -86,21 +101,34 @@ See `SECURITY_REVIEW.md` and `THREAT_MODEL.md` for the working checklist and sim
 
 ## Screenshots
 
-TODO: Add verified screenshots from the public `tawhid.ro` website.
+Screenshots captured from the public `tawhid.ro` website.
 
-Suggested screenshots:
+### Homepage, Desktop
 
-- Home page
-- Article or reading page
-- Search or content navigation page
-- Contact form or public communication page, if appropriate
+![Homepage desktop screenshot](assets/screenshots/homepage-desktop.png)
 
-Screenshots should not show private dashboards, unpublished content, analytics, secrets, admin panels, or personal data.
+### Article Page, Desktop
+
+![Article page desktop screenshot](assets/screenshots/article-desktop.png)
+
+### Articles Index, Desktop
+
+![Articles index desktop screenshot](assets/screenshots/articles-index-desktop.png)
+
+### Homepage, Mobile
+
+![Homepage mobile screenshot](assets/screenshots/homepage-mobile.png)
+
+### Article Page, Mobile
+
+![Article page mobile screenshot](assets/screenshots/article-mobile.png)
+
+These screenshots show public pages only. They do not show private dashboards, unpublished content, analytics, secrets, admin panels, or personal data.
 
 ## Future Improvements
 
-- Add verified screenshots and captions
-- Add a public-safe architecture diagram
+- Refresh screenshots when the public website design changes
+- Expand screenshot captions with short feature notes
 - Document the content review workflow at a high level
 - Confirm deployment provider and public infrastructure details before listing them
 - Expand the security review after any form, admin, or authentication changes
