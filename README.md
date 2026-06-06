@@ -101,7 +101,7 @@ See `SECURITY_REVIEW.md` and `THREAT_MODEL.md` for the working checklist and sim
 
 ## Screenshots
 
-Screenshots captured from the public `tawhid.ro` website.
+Screenshots captured from the public `tawhid.ro` website after scrolling once to trigger lazy-loaded and reveal-on-scroll content.
 
 ### Homepage, Desktop
 
