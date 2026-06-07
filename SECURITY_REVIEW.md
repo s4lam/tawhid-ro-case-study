@@ -15,6 +15,7 @@ Last verification pass: 2026-06-07.
 
 - [x] `Verified` Public case-study repo contains documentation and screenshots only.
 - [x] `Verified` Current private project tracked tree has no committed production `.env` files or detected secret-pattern hits.
+- [x] `Verified` Public response headers identify the production host as Vercel.
 - [ ] `Needs review` Private project dependency audit found known vulnerabilities and must be remediated or risk-accepted.
 - [ ] `Needs review` XSS review is not complete because multiple `dangerouslySetInnerHTML` and `innerHTML` surfaces exist.
 - [ ] `Needs review` DNS/email setup needs cleanup because `_dmarc.tawhid.ro` returned multiple DMARC TXT records.
@@ -33,6 +34,7 @@ Last verification pass: 2026-06-07.
 ## Dependency Review
 
 - [ ] `Needs review` `npm audit --json` found 15 vulnerabilities: 4 low, 7 moderate, 4 high, 0 critical.
+- [ ] `Needs review` `npm audit --omit=dev --json` still found 2 moderate production dependency vulnerabilities: `next` and `postcss`.
 - [ ] `Needs review` Vulnerable packages reported include `next`, `postcss`, `qs`, `tmp`, `uuid`, `inquirer`, and Netlify/Stackbit-related packages.
 - [x] `Verified` Private project has validation scripts available, including `lint`, `typecheck`, and `verify:seo`.
 - [ ] `Needs review` Review high-risk dependency updates before applying them.
@@ -83,6 +85,7 @@ Last verification pass: 2026-06-07.
 
 - [x] `Verified` Public case-study repository contains no contact submissions, analytics data, or personal user data.
 - [x] `Verified` Private project contains a privacy-related page: `pages/confidentialitate-aplicatie.tsx`.
+- [x] `Verified` Public privacy page returns 200 and mentions contact, email, newsletter, personal data, form, and storage-related terms.
 - [ ] `Needs review` Identify all personal data collected through contact forms, newsletter forms, email, analytics, and logs.
 - [ ] `Needs review` Minimize collected data and avoid storing unnecessary contact submissions.
 - [ ] `Needs review` Document how submissions are handled and retained.
@@ -112,10 +115,12 @@ Last verification pass: 2026-06-07.
 ## Deployment Security
 
 - [x] `Verified` Public case-study GitHub repository is public and uses `main` as default branch.
+- [x] `Verified` Public response headers identify the production deployment provider as Vercel.
+- [x] `Verified` Local Vercel project metadata is present with project and organization identifiers.
 - [x] `Verified` Public site apex HTTPS redirects to canonical `https://www.tawhid.ro`.
 - [x] `Verified` HTTP requests redirect to HTTPS before canonical routing.
 - [x] `Verified` Private project includes redirect/security-header configuration in `next.config.js`.
-- [ ] `Needs review` Confirm deployment provider and production access controls.
+- [ ] `Needs review` Confirm production access controls in the Vercel dashboard or authenticated CLI.
 - [ ] `Needs review` Restrict deployment access to trusted accounts.
 - [ ] `Needs review` Use separate production secrets from local development secrets.
 - [ ] `Needs review` Review build logs for accidental secret exposure.
